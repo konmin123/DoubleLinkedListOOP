@@ -6,10 +6,11 @@ from dln_node import Dln
 
 
 class LinkedList(MutableSequence):
+    """ Класс описывающий связанный список. """
     CLASS_NODE = Node
 
     def __init__(self, data: Iterable = None):
-        """ Конструктор связного списка. """
+        """ Конструктор связнного списка. """
         self._len = 0
         self._head: Optional[Node] = None
         self._tail = self._head
@@ -52,7 +53,7 @@ class LinkedList(MutableSequence):
         self._len -= 1
 
     def __len__(self) -> int:
-        """ Метод возвращает длину свызанного списка. """
+        """ Метод возвращает длину связанного списка. """
         return self._len
 
     def __str__(self) -> str:
@@ -113,24 +114,22 @@ class LinkedList(MutableSequence):
 
     @staticmethod
     def linked_nodes(left_node: Node, right_node: Optional[Node] = None) -> None:
-        """
-        Метод, который связывает между собой два узла.
-
-        :param left_node: Левый или предыдущий узел
-        :param right_node: Правый или следующий узел
-        """
+        """Метод, который связывает между собой два узла. """
         left_node.next = right_node
 
     def to_list(self) -> list:
+        """ Метод формирующий список значений всех узлов односвязного списка. """
         return [linked_list_value for linked_list_value in self]
 
     def nodes_iterator(self) -> Iterator[Node]:
+        """ Метод итерации по узлам односвязного списка. """
         current_node = self._head
         for _ in range(self._len):
             yield current_node
             current_node = current_node.next
 
     def clear(self):
+        """ Метод удаляющий односвязаный список. """
         self._head = None
         self._tail = None
 
@@ -138,16 +137,12 @@ class LinkedList(MutableSequence):
 
 
 class DoubleLinkedList(LinkedList):
+    """ Класс описывающий двусвязанный список. """
     CLASS_NODE = Dln
 
     @staticmethod
     def linked_nodes(left_node: Dln, right_node: Optional[Dln] = None) -> None:
-        """
-        Метод, которая связывает между собой два узла в двусвязанном списке.
-
-        :param left_node: Левый или предыдущий узел
-        :param right_node: Правый или следующий узел
-        """
+        """ Метод, который связывает между собой два узла в двусвязанном списке."""
         left_node.next = right_node
         right_node.prev = left_node
 

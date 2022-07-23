@@ -5,7 +5,7 @@ from dln_node import Dln
 
 class TestCase(unittest.TestCase):
     def test_init_node_without_next_prev(self):
-        """Тест узла после инициализации с аргументом next_ и prev по умолчанию"""
+        """ Тест узла после инициализации с аргументом next_ и prev по умолчанию. """
         node = Dln(5)
 
         self.assertIsNone(node.next)
@@ -13,7 +13,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(5, node.value)
 
     def test_init_node_with_next_prev(self):
-        """Тест узла после инициализации с переданными аргументами next_ и prev"""
+        """ Тест узла после инициализации с переданными аргументами next_ и prev. """
         left_dln = Dln(1)
         right_dln = Dln(3)
         curren_dln = Dln(2, left_dln, right_dln)
@@ -23,14 +23,14 @@ class TestCase(unittest.TestCase):
         self.assertEqual(2, curren_dln.value)
 
     def test_repr_node_without_next_prev(self):
-        """Тест метода __repr__, для случая когда нет следующего и предыдущего узла."""
+        """ Тест метода __repr__, для случая когда нет следующего и предыдущего узла. """
         dln = Dln(5)
 
         expected_repr = 'Dln(5, None, None)'
         self.assertEqual(expected_repr, repr(dln))
 
     def test_repr_node_with_next_prev(self):
-        """Тест метода __repr__, для случая когда установлен следующий узел и предыдущий узел."""
+        """ Тест метода __repr__, для случая когда установлен следующий узел и предыдущий узел. """
         left_dln = Dln(1)
         right_dln = Dln(3)
         curren_dln = Dln(2, left_dln, right_dln)
@@ -39,7 +39,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(expected_repr, repr(curren_dln))
 
     def test_str(self):
-        """Тест метода __str__, корректность отображения атрибута value."""
+        """ Тест метода __str__, корректность отображения атрибута value. """
         some_value = 5
         dln = Dln(some_value)
 
